@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Art App: Getting to Know Estimote!
 
 TODOS:
@@ -16,3 +17,9 @@ Key Code for Art App:
 * AppDelegate local notification methods
 * Config.h with constants for UUIDs
 * BeaconManager for CoreLocation and beacon management methods
+=======
+EstimoteV1
+==========
+
+CoreLocation + Background mode with my estimote beacons
+>>>>>>> dbba097618e1cbf3fa3cbfecddbcfb9eeb215971
