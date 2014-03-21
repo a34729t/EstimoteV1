@@ -7,12 +7,10 @@
 //
 
 #import "ViewController.h"
-#import "CentralManager.h"
 #import "BeaconManager.h"
 
-@interface ViewController () <CentralManagerDelegate, BeaconManagerDelegate>
+@interface ViewController () <BeaconManagerDelegate>
 
-@property (nonatomic, strong) CentralManager *centralManager;
 @property (nonatomic, strong) BeaconManager *beaconManager;
 
 @end
@@ -25,8 +23,6 @@
 	// Do any additional setup after loading the view, typically from a nib.
     NSLog(@"started!");
     
-//    self.centralManager = [CentralManager sharedInstance];
-//    self.centralManager.delegate = self;
     self.beaconManager = [BeaconManager sharedInstance];
     self.beaconManager.delegate = self;
     
@@ -41,13 +37,12 @@
 
 - (IBAction)scanButtonPressed:(UIButton *)sender
 {
-    [self.centralManager startDetecting];
 }
 
--(void)didDiscoverPeripheral:(CBPeripheral *)peripheral rssi:(NSNumber *)RSSI
+-(void)discoveredBeacon:(NSString *)key distance:(NSString *)distanceStr
 {
-    NSLog(@"View didDiscoverPeripheral: %@", [RSSI stringValue]);
-    [self.rssiLabel setText:[RSSI stringValue]];
+    NSLog(@"View discoveredBeacon distance:%@", distanceStr);
+    [self.rssiLabel setText:distanceStr];
 }
 
 @end
