@@ -7,8 +7,6 @@
 //
 
 #import "AppDelegate.h"
-@import CoreLocation;
-#import "Config.h"
 
 @implementation AppDelegate
 
@@ -48,49 +46,12 @@
 #pragma mark - local notification stuff
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
-    
-    if (![CLLocationManager significantLocationChangeMonitoringAvailable])
-    {UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"Your device won't support the significant location change." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        return YES;
-    }
-    
-    UILocalNotification *localNotification=[launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
-    if (localNotification) {
-        [self handleLaunchNotification:localNotification];
-        application.applicationIconBadgeNumber = localNotification.applicationIconBadgeNumber-1;
-    }else{
-        application.applicationIconBadgeNumber = 0;
-    }
+    // TODO
     return YES;
 }
 
-// application not running
--(void)handleLaunchNotification:(UILocalNotification*)notifcation{
-    NSString *notifText=[notifcation.userInfo objectForKey:NOTIF_KEY];
-    NSLog(@"handleLaunchNotification passed text %@",notifText);
-}
+// TODO
 
-// application is in the background or active
--(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
-    
-    if (application.applicationState==UIApplicationStateActive){
-        /*
-        NSLog(@"application didReceiveLocalNotification (foreground)");
-        NSString *body=notification.alertBody;
-        
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Elphi AD 2"
-                                                          message:[NSString stringWithFormat:@"%@",body]
-                                                         delegate:self
-                                                cancelButtonTitle:@"OK"
-                                                otherButtonTitles:nil];
-        [message show];
-         */
-    } else if (application.applicationState==UIApplicationStateBackground) {
-        NSLog(@"application didReceiveLocalNotification (background)");
-        application.applicationIconBadgeNumber = notification.applicationIconBadgeNumber+1;
-        
-    }
-}
+// TODO
 
 @end
